@@ -31,7 +31,7 @@ Esta aplicación es un sistema de gestión de productos y carritos utilizando No
 ## Ejemplo de Uso
 
 ### Guardar un producto
-- **POST localhost:8080/api/products
+- POST localhost:8080/api/products
 ```json
 {
   "title": "Producto de Prueba 1",
