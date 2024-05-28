@@ -5,6 +5,7 @@ import { Cart } from '../dao/models/cart.mode.js';
 
 const router = express.Router();
 const productManager = new ProductManager();
+const currentCartId = '6647cdef564ecf01c5add630'; // Uso este ID de carrito para simular el agregado del cliente (Reemplazar por uno propio).
 
 router.get('/', (req, res) => {
     res.render('index', {});
@@ -47,7 +48,6 @@ router.get('/products', async (req, res) => {
             lean: true
         };
         const products = await Product.paginate({}, options);
-        const currentCartId = '6647cdef564ecf01c5add630'; // Uso este ID de carrito para simular el agregado del cliente.
         res.render('products', { products, currentCartId });
     } catch (error) {
         console.error("Error al obtener productos:", error);
@@ -57,7 +57,6 @@ router.get('/products', async (req, res) => {
 
 router.get('/products/:id', async (req, res) => {
     const { id } = req.params;
-    const currentCartId = '6647cdef564ecf01c5add630'; // Uso este ID de carrito para simular el agregado del cliente.
     try {
         const product = await Product.findById(id).lean();
         if (product) {
@@ -72,7 +71,6 @@ router.get('/products/:id', async (req, res) => {
 });
 
 router.get('/carts/:cid', async (req, res) => {
-    const currentCartId = '6647cdef564ecf01c5add630'; // Uso este ID de carrito para simular el agregado del cliente.
     try {
         //Aca le aplico tambien la paginacion a la vista unica de un carrito
         const cartId = req.params.cid;
